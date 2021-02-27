@@ -71,3 +71,52 @@ function writeYourGenres() {
 }
 
 writeYourGenres();
+
+//колбэки
+
+function a (a, callback) {
+	console.log(a);
+	callback();
+}
+
+a('сообщение', function () {
+	console.log('привет мир!');
+});
+
+// объекты
+
+const options = {
+	name: 'test',
+	width: 1024,
+	height: 1024,
+	colors: {
+		border: 'black',
+		bg: 'red'
+	},
+	makeTest: function() { // можно и функции написать в объекте
+		console.log('test');
+	}
+};
+
+options.makeTest();
+
+// деструктуризация объектов
+const {border, bg} = options.colors;
+console.log(border);
+
+console.log(Object.keys(options).length); // узнать количество ключей объекта
+
+// console.log(options.name);
+
+// перебор значений
+for (let key in options) {
+	if(typeof(options[key]) === 'object') {
+		for(let i in options[key]) {
+			console.log(`Свойство ${i} иммет значение ${options[key][i]}`);
+		}
+	} else {
+		console.log(`Свойство ${key} иммет значение ${options[key]}`);
+	}
+}
+
+console.dir(String); //чтобы узнать все свойства и методы объекта String работает в консоли браузера
